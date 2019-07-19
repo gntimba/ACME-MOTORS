@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ACME_MOTORS.Migrations
 {
-    public partial class initialCreate : Migration
+    public partial class _3nditera : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

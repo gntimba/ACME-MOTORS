@@ -17,5 +17,43 @@ namespace ACME_MOTORS.Models
         public DbSet<MotorbikeModel> motorbikes { get; set; }
         public DbSet<EngineModel> engines { get; set; }
         public DbSet<ManufacturerModel> manufacturers { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TruckModel>()
+                .Property(b => b.AmendedOn)
+                .HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<TruckModel>()
+                .Property(b => b.CreatedOn)
+                .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<CarModel>()
+            .Property(b => b.AmendedOn)
+            .HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<CarModel>()
+                .Property(b => b.CreatedOn)
+                .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<MotorbikeModel>()
+            .Property(b => b.AmendedOn)
+            .HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<MotorbikeModel>()
+                .Property(b => b.CreatedOn)
+                .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<EngineModel>()
+            .Property(b => b.AmendedOn)
+            .HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<EngineModel>()
+                .Property(b => b.CreatedOn)
+                .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<EngineModel>()
+            .Property(b => b.AmendedOn)
+            .HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<EngineModel>()
+                .Property(b => b.CreatedOn)
+                .HasDefaultValueSql("getdate()");
+        }
+
     }
 }

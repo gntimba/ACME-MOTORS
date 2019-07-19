@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ACME_MOTORS.Migrations
 {
     [DbContext(typeof(AcmeMotorContext))]
-    [Migration("20190717190749_initialCreate")]
-    partial class initialCreate
+    [Migration("20190718091818_3nd-itera")]
+    partial class _3nditera
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,11 +26,13 @@ namespace ACME_MOTORS.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("AmendedOn");
+                    b.Property<DateTime>("AmendedOn")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("Color");
 
-                    b.Property<DateTime>("CreatedOn");
+                    b.Property<DateTime>("CreatedOn")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("EngineId");
 
@@ -54,9 +56,11 @@ namespace ACME_MOTORS.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("AmendedOn");
+                    b.Property<DateTime>("AmendedOn")
+                        .ValueGeneratedOnAddOrUpdate();
 
-                    b.Property<DateTime>("CreatedOn");
+                    b.Property<DateTime>("CreatedOn")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("FuelType");
 
@@ -80,9 +84,11 @@ namespace ACME_MOTORS.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("AmendedOn");
+                    b.Property<DateTime>("AmendedOn")
+                        .ValueGeneratedOnAddOrUpdate();
 
-                    b.Property<DateTime>("CreatedOn");
+                    b.Property<DateTime>("CreatedOn")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("Name");
 
@@ -96,11 +102,13 @@ namespace ACME_MOTORS.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("AmendedOn");
+                    b.Property<DateTime>("AmendedOn")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("Color");
 
-                    b.Property<DateTime>("CreatedOn");
+                    b.Property<DateTime>("CreatedOn")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("EngineId");
 
@@ -124,11 +132,13 @@ namespace ACME_MOTORS.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("AmendedOn");
+                    b.Property<DateTime>("AmendedOn")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("Color");
 
-                    b.Property<DateTime>("CreatedOn");
+                    b.Property<DateTime>("CreatedOn")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("EngineId");
 
