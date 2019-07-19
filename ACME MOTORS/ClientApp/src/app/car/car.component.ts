@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { OnlineService } from '../services/online.service';
 
 @Component({
   selector: 'app-car',
@@ -7,9 +9,83 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarComponent implements OnInit {
 
-  constructor() { }
+  public form: FormGroup;
+  car;
+  Manufacturer;
+  engine;
+  TableRow;
+  id
+  clicked = false
+  constructor(private service: OnlineService) { }
 
   ngOnInit() {
-  }
 
+    this.get()
+    this.getBoxes()
+    this.form = new FormGroup({
+      model: new FormControl("", [
+        Validators.required,
+        Validators.minLength(2)
+      ]),
+      year: new FormControl("", [
+        Validators.required,
+        Validators.min(1700),
+        Validators.max(2019)
+      ]),
+      color: new FormControl("", [
+        Validators.required
+      ]),
+      hasRustDamage: new FormControl("", [
+        Validators.required
+      ]),
+      quantityInStock: new FormControl("", [
+        Validators.required,
+        Validators.minLength(1)
+      ]),
+      manufacturerId: new FormControl("", [
+        Validators.required
+      ]),
+      engineId: new FormControl("", [
+        Validators.required
+      ])
+    })
+
+  }
+  get() {
+    this.id = "B3AEA1FF-7B8F-4453-31B2-08D70C764552"
+    this.service.getCar(this.id).subscribe(data => {
+      this.car = data
+      this.TableRow = Object.assign({}, data);
+      this.clicked = true
+      console.log(data)
+    })
+  }
+  onSubmit() {
+    console.log(this.form.value)
+    this.service.addCar(this.form.value).subscribe(data => {
+      this.get()
+    })
+
+  }
+  getBoxes(){
+    this.service.getManufacture().subscribe(data=>{
+      this.Manufacturer=data
+    })
+    this.service.getEngine().subscribe(data=>{
+      this.engine=data
+    })
+
+  }
+  update() {
+    this.service.updateCar(this.TableRow).subscribe(data => {
+      console.log(data)
+      this.get()
+    })
+
+  }
+  // getrow(row) {
+  //   this.TableRow = Object.assign({},row);
+  //   // tslint:disable-next-line: semicolon
+  //   this.clicked = true
+  // }
 }

@@ -8,9 +8,9 @@ namespace ACME_MOTORS.Models
 {
     public class CarModel:BaseTable
     {
-        public String EngineId { get; set; }
+        public Guid EngineId { get; set; }
 
-        public String ManufacturerId { get; set; }
+        public Guid ManufacturerId { get; set; }
 
         public String Model { get; set; }
 
