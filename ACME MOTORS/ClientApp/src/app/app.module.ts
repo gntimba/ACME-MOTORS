@@ -33,9 +33,9 @@ import { MotorbikeComponent } from './motorbike/motorbike.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'engine', component: EngineComponent },
       { path: 'manu', component: ManufactureComponent },
-      { path: 'car', component: CarComponent },
-      { path: 'truck', component: TruckComponent },
-      { path: 'motorbike', component: MotorbikeComponent },
+      { path: 'car/:id', component: CarComponent },
+      { path: 'truck/:id', component: TruckComponent },
+      { path: 'motorbike/:id', component: MotorbikeComponent },
     ])
   ],
   providers: [],

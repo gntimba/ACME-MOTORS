@@ -2,7 +2,7 @@
 
   <div class="col-3">
     <p>
-      Add car
+      Add Truck
     </p>
     <form [formGroup]="form">
       <input class="form-control" formControlName="model" type="text"  placeholder="Enter Model"/>
@@ -23,18 +23,15 @@
       <br>
       <input class="form-control" formControlName="quantityInStock" type="number"  placeholder="Enter Quantity"/>
       <br>
-      <label for="exampleFormControlSelect1"> Has Rust Damage?</label>
-      <select formControlName="hasRustDamage" class="form-control" id="exampleFormControlSelect1">
-        <option value="True">Yes</option>
-        <option value="False">No</option>
-
-      </select>
+      <input class="form-control" formControlName="numberOfWheels" type="number"  placeholder="Enter No. of Wheels"/>
+      <br>
+      <input class="form-control" formControlName="maximumLoad" type="number"  placeholder="Enter Maximum Load"/>
       <br>
       <button class="btn btn-success" [disabled]="form.invalid" (click)="onSubmit()" >Insert Car 2 char</button>
 
     </form>
   </div>
-  <div *ngIf="car!=null" class="col-5">
+  <div *ngIf="Truck!=null" class="col-5">
       <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
@@ -45,78 +42,79 @@
           <tbody>
             <tr>
               <th>ID</th>
-              <td>{{car.id}}</td>
+              <td>{{Truck.id}}</td>
             </tr>
             <tr>
               <th>Engine ID</th>
-              <td>{{car.engineId}}</td>
+              <td>{{Truck.engineId}}</td>
             </tr>
             <tr>
               <th>Manufacturer ID</th>
-              <td>{{car.manufacturerId}}</td>
+              <td>{{Truck.manufacturerId}}</td>
             </tr>
             <tr>
               <th>Model</th>
-              <td>{{car.model}}</td>
+              <td>{{Truck.model}}</td>
             </tr>
             <tr>
               <th>year</th>
-              <td>{{car.year}}</td>
+              <td>{{Truck.year}}</td>
             </tr>
             <tr>
               <th>color</th>
-              <td>{{car.color}}</td>
+              <td>{{Truck.color}}</td>
             </tr>
             <tr>
               <th>Has Rust Damage</th>
-              <td>{{car.hasRustDamage}}</td>
+              <td>{{Truck.numberOfWheels}}</td>
+            </tr>
+            <tr>
+              <th>Has Rust Damage</th>
+              <td>{{Truck.maximumLoad}}</td>
             </tr>
             <tr>
               <th>Type</th>
-              <td>{{car.type}}</td>
+              <td>{{Truck.type}}</td>
             </tr>
             <tr>
               <th>Quantity In Stock</th>
-              <td>{{car.quantityInStock}}</td>
+              <td>{{Truck.quantityInStock}}</td>
             </tr>
             <tr>
               <th>Created</th>
-              <td>{{car.createdOn|date:'mediumDate'}}</td>
+              <td>{{Truck.createdOn|date:'mediumDate'}}</td>
             </tr>
             <tr>
               <th>Modified</th>
-              <td>{{car.amendedOn|date:'mediumDate'}}</td>
+              <td>{{Truck.amendedOn|date:'mediumDate'}}</td>
             </tr>
           </tbody>
         </table>
   </div>
   <div *ngIf="clicked" class="col-3">
-<p>Update</p>
-    <input class="form-control" [(ngModel)] ="TableRow.model" type="text"  placeholder="Enter Model"/>
-    <br>
-    <label for="exampleFormControlSelect2"> select Manufacturer</label>
-    <select [(ngModel)] ="TableRow.manufacturerId" class="form-control" id="exampleFormControlSelect2">
-        <option  *ngFor="let manu of Manufacturer" value="{{manu.id}}">{{manu.name}}</option>
-      </select>
-      <br>
-      <label for="exampleFormControlSelect3"> select Engine</label>
-      <select [(ngModel)] ="TableRow.engineId" class="form-control" id="exampleFormControlSelect3">
-          <option  *ngFor="let manu of engine" value="{{manu.id}}">{{manu.model}}</option>
-        </select>
-        <br>
-    <input class="form-control" [(ngModel)] ="TableRow.year" type="text"  placeholder="Enter Year"/>
-    <br>
-    <input class="form-control" [(ngModel)] ="TableRow.color" type="text"  placeholder="Enter Color"/>
-    <br>
-    <input class="form-control" [(ngModel)] ="TableRow.quantityInStock" type="number"  placeholder="Enter Quantity"/>
-    <br>
-    <label for="exampleFormControlSelect1"> Has Rust Damage?</label>
-    <select [(ngModel)] ="TableRow.hasRustDamage" class="form-control" id="exampleFormControlSelect1">
-      <option value="True">Yes</option>
-      <option value="False">No</option>
-
+    <p>Update Truck</p>
+<input class="form-control" [(ngModel)] ="TableRow.model" type="text"  placeholder="Enter Model"/>
+<br>
+<label for="exampleFormControlSelect2"> select Manufacturer</label>
+<select [(ngModel)] ="TableRow.manufacturerId" class="form-control" id="exampleFormControlSelect2">
+    <option  *ngFor="let manu of Manufacturer" value="{{manu.id}}">{{manu.name}}</option>
+  </select>
+  <br>
+  <label for="exampleFormControlSelect3"> select Engine</label>
+  <select [(ngModel)] ="TableRow.engineId" class="form-control" id="exampleFormControlSelect3">
+      <option  *ngFor="let manu of engine" value="{{manu.id}}">{{manu.model}}</option>
     </select>
     <br>
+<input class="form-control" [(ngModel)] ="TableRow.year" type="text"  placeholder="Enter Year"/>
+<br>
+<input class="form-control" [(ngModel)] ="TableRow.color" type="text"  placeholder="Enter Color"/>
+<br>
+<input class="form-control" [(ngModel)] ="TableRow.quantityInStock" type="number"  placeholder="Enter Quantity"/>
+<br>
+<input class="form-control" [(ngModel)] ="TableRow.numberOfWheels" type="number"  placeholder="Enter No. of Wheels"/>
+<br>
+<input class="form-control" [(ngModel)] ="TableRow.maximumLoad" type="number"  placeholder="Enter Maximum Load"/>
+<br>
           <button class="btn btn-success"  (click)="update()" >UpdateMAnufacure</button>
 
   </div>

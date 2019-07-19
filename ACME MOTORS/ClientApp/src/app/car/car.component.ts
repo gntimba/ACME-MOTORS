@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { OnlineService } from '../services/online.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-car',
@@ -16,7 +17,7 @@ export class CarComponent implements OnInit {
   TableRow;
   id
   clicked = false
-  constructor(private service: OnlineService) { }
+  constructor(private route: ActivatedRoute,private service: OnlineService) { }
 
   ngOnInit() {
 
@@ -52,13 +53,15 @@ export class CarComponent implements OnInit {
 
   }
   get() {
-    this.id = "B3AEA1FF-7B8F-4453-31B2-08D70C764552"
+    if(this.route.snapshot.paramMap.get("id")!=="#"){
+    this.id=this.route.snapshot.paramMap.get("id")
     this.service.getCar(this.id).subscribe(data => {
       this.car = data
       this.TableRow = Object.assign({}, data);
       this.clicked = true
       console.log(data)
     })
+  }
   }
   onSubmit() {
     console.log(this.form.value)
