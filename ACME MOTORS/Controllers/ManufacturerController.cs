@@ -49,8 +49,14 @@ namespace ACME_MOTORS.Controllers
             {
                 return BadRequest();
             }
+            var ma= new ManufacturerModel{
+                Name=manufacturerModel.Name,
+                AmendedOn=DateTime.Now,
+                CreatedOn=manufacturerModel.CreatedOn,
+                Id=manufacturerModel.Id
+            };
 
-            _context.Entry(manufacturerModel).State = EntityState.Modified;
+            _context.Entry(ma).State = EntityState.Modified;
 
             try
             {
