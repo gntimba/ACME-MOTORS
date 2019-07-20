@@ -8,6 +8,10 @@ import { Manufacture } from '../model/manufacture.model';
 export class OnlineService {
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+
+  getVehicles(){
+     return this.http.get(this.baseUrl + 'api/Home')
+  }
   // Manufacture
   ManuUrl = 'api/Manufacturer/';
   EngineUrl = 'api/Engine/';

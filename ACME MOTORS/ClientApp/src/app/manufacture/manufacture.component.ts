@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OnlineService } from '../services/online.service';
 import { Manufacture } from '../model/manufacture.model';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-manufacture',
@@ -14,7 +15,7 @@ export class ManufactureComponent implements OnInit {
   ManufacturerName;
   TableRow: Manufacture;
   clicked = false
-  constructor(private service: OnlineService) { }
+  constructor(private service: OnlineService,private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -36,12 +37,14 @@ export class ManufactureComponent implements OnInit {
   onSubmit() {
     console.log(this.form.value)
     this.service.addManufacture(this.form.value).subscribe(data => {
+      this.toastr.success('Add successfully', 'Update');
       this.get()
     })
 
   }
   update() {
   this.service.updateManufacture(this.TableRow).subscribe(data=>{
+    this.toastr.success('Updated successfully', 'Update');
     console.log(data)
     this.get()
   })

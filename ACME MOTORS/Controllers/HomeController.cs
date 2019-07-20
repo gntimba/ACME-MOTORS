@@ -21,9 +21,62 @@ namespace ACME_MOTORS.Controllers
         }
         // GET: api/Home
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var cars = ( from car in _context.cars
+                               join manu in _context.manufacturers on car.ManufacturerId equals manu.Id
+                               select new
+                               {
+                                   car.Id,
+                                   car.QuantityInStock,
+                                   car.Model,
+                                   car.Year,
+                                   car.Color,
+                                   ManufacturerName = manu.Name,
+                                   car.Type
+                            
+                               }
+                    ).ToList();
+                var trucks = (from truck in _context.trucks
+                              join manu in _context.manufacturers on truck.ManufacturerId equals manu.Id
+                              select new
+                              {
+                                  truck.Id,
+                                  truck.QuantityInStock,
+                                  truck.Model,
+                                  truck.Year,
+                                  truck.Color,
+                                  ManufacturerName = manu.Name,
+                                  truck.Type
+                                ,
+                              }
+                            ).ToList();
+                var motorbikes = (from motorbike in _context.motorbikes
+                              join manu in _context.manufacturers on motorbike.ManufacturerId equals manu.Id
+                              select new
+                              {
+                                  motorbike.Id,
+                                  motorbike.QuantityInStock,
+                                  motorbike.Model,
+                                  motorbike.Year,
+                                  motorbike.Color,
+                                  ManufacturerName = manu.Name,
+                                  motorbike.Type
+                                 
+                              }
+                        ).ToList();
+                var Vehicles = cars.Union(trucks).Union(motorbikes);
+                var VehicleSorted = Vehicles.OrderBy(x => x.ManufacturerName);
+                return Ok(VehicleSorted);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+                return StatusCode(500);
+            }
         }
 
     }

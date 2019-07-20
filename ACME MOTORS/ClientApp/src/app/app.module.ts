@@ -12,6 +12,9 @@ import { EngineComponent } from './engine/engine.component';
 import { CarComponent } from './car/car.component';
 import { TruckComponent } from './truck/truck.component';
 import { MotorbikeComponent } from './motorbike/motorbike.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import { MotorbikeComponent } from './motorbike/motorbike.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'engine', component: EngineComponent },

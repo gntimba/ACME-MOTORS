@@ -49,8 +49,20 @@ namespace ACME_MOTORS.Controllers
             {
                 return BadRequest();
             }
+            var car=new CarModel{
+                Id=carModel.Id,
+                ManufacturerId=carModel.ManufacturerId,
+                Year=carModel.Year,
+                QuantityInStock=carModel.QuantityInStock,
+                Model=carModel.Model,
+                EngineId=carModel.EngineId,
+                HasRustDamage=carModel.HasRustDamage,
+                Color=carModel.Color,
+                CreatedOn=carModel.CreatedOn,
+                AmendedOn=DateTime.UtcNow
+            };
 
-            _context.Entry(carModel).State = EntityState.Modified;
+            _context.Entry(car).State = EntityState.Modified;
 
             try
             {

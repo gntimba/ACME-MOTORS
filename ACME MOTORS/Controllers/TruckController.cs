@@ -49,8 +49,22 @@ namespace ACME_MOTORS.Controllers
             {
                 return BadRequest();
             }
+            var truck=new TruckModel{
+                Id=truckModel.Id,
+                ManufacturerId=truckModel.ManufacturerId,
+                Year=truckModel.Year,
+                QuantityInStock=truckModel.QuantityInStock,
+                Model=truckModel.Model,
+                EngineId=truckModel.EngineId,
+                MaximumLoad=truckModel.MaximumLoad,
+                Color=truckModel.Color,
+                CreatedOn=truckModel.CreatedOn,
+                NumberOfWheels=truckModel.NumberOfWheels,
+                AmendedOn=DateTime.UtcNow
+                
+            };
 
-            _context.Entry(truckModel).State = EntityState.Modified;
+            _context.Entry(truck).State = EntityState.Modified;
 
             try
             {

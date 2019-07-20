@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { OnlineService } from '../services/online.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-engine',
@@ -13,7 +14,7 @@ export class EngineComponent implements OnInit {
   ManufacturerName;
   TableRow;
   clicked = false
-  constructor(private service: OnlineService) { }
+  constructor(private service: OnlineService,private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getEngine()
@@ -62,12 +63,14 @@ export class EngineComponent implements OnInit {
   onSubmit() {
     console.log(this.form.value)
     this.service.addEngine(this.form.value).subscribe(data => {
+      this.toastr.success('Add successfully', 'Update');
       this.getEngine()
     })
 
   }
   update() {
   this.service.updateEngine(this.TableRow).subscribe(data=>{
+    this.toastr.success('Updated successfully', 'Update');
     console.log(data)
     this.getEngine()
   })

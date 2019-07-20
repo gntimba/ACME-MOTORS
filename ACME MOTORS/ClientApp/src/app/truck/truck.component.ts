@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OnlineService } from '../services/online.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-truck',
@@ -17,7 +18,7 @@ export class TruckComponent implements OnInit {
   TableRow;
   id
   clicked = false
-  constructor(private service: OnlineService,private route: ActivatedRoute) { }
+  constructor(private service: OnlineService,private route: ActivatedRoute,private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -69,6 +70,7 @@ export class TruckComponent implements OnInit {
 
     console.log(this.form.value)
     this.service.addTruck(this.form.value).subscribe(data => {
+      this.toastr.success('Add successfully', 'Update');
       this.get()
     })
 
@@ -84,6 +86,7 @@ export class TruckComponent implements OnInit {
   }
   update() {
     this.service.updateTruck(this.TableRow).subscribe(data => {
+      this.toastr.success('Updated successfully', 'Update');
       console.log(data)
       this.get()
     })

@@ -49,8 +49,21 @@ namespace ACME_MOTORS.Controllers
             {
                 return BadRequest();
             }
+             var motorbike=new MotorbikeModel{
+                Id=motorbikeModel.Id,
+                ManufacturerId=motorbikeModel.ManufacturerId,
+                Year=motorbikeModel.Year,
+                QuantityInStock=motorbikeModel.QuantityInStock,
+                Model=motorbikeModel.Model,
+                EngineId=motorbikeModel.EngineId,
+                HasWindVisor=motorbikeModel.HasWindVisor,
+                Color=motorbikeModel.Color,
+                CreatedOn=motorbikeModel.CreatedOn,
+                AmendedOn=DateTime.UtcNow
+                
+            };
 
-            _context.Entry(motorbikeModel).State = EntityState.Modified;
+            _context.Entry(motorbike).State = EntityState.Modified;
 
             try
             {

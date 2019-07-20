@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OnlineService } from '../services/online.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-motorbike',
@@ -17,7 +18,7 @@ export class MotorbikeComponent implements OnInit {
   TableRow;
   id
   clicked = false
-  constructor(private route: ActivatedRoute,private service: OnlineService) { }
+  constructor(private route: ActivatedRoute,private service: OnlineService,private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -66,6 +67,7 @@ export class MotorbikeComponent implements OnInit {
   onSubmit() {
     console.log(this.form.value)
     this.service.addMoto(this.form.value).subscribe(data => {
+      this.toastr.success('Add successfully', 'Update');
       this.get()
     })
 
@@ -81,6 +83,7 @@ export class MotorbikeComponent implements OnInit {
   }
   update() {
     this.service.updateMoto(this.TableRow).subscribe(data => {
+      this.toastr.success('Updated successfully', 'Update');
       console.log(data)
       this.get()
     })
