@@ -74,7 +74,7 @@ export class CarComponent implements OnInit {
   }
   getBoxes(){
     this.service.getManufacture().subscribe(data=>{
-      this.toastr.success('Updated successfully', 'Update');
+
       this.Manufacturer=data
     })
     this.service.getEngine().subscribe(data=>{
@@ -84,6 +84,7 @@ export class CarComponent implements OnInit {
   }
   update() {
     this.service.updateCar(this.TableRow).subscribe(data => {
+       this.toastr.success('Updated successfully', 'Update');
       console.log(data)
       this.get()
     })
