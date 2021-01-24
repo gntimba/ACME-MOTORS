@@ -1,0 +1,27 @@
+<div class="text-center">
+  <h1>VEHICLES</h1>
+</div>
+<div class="col"><p>Click Row to Update</p>
+  <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Model</th>
+          <th scope="col">Manufacturer</th>
+          <th scope="col">Year</th>
+          <th scope="col">Color</th>
+          <th scope="col">Type</th>
+          <th scope="col">Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr [routerLink]="['/'+vehicle.type.toLowerCase(),vehicle.id]" *ngFor="let vehicle of vehicles" >
+
+          <td>{{vehicle.model}}</td>
+          <td>{{vehicle.manufacturerName}}</td>
+          <td>{{vehicle.year}}</td>
+          <td>{{vehicle.color}}</td>
+          <td>{{vehicle.type}}</td>
+          <td>{{vehicle.quantityInStock}}</td>
+        </tr>
+      </tbody>
+    </table>
